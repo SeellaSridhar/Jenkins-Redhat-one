@@ -1,0 +1,14 @@
+node {
+    
+    def mavenHome = tool name: "Maven3.9.6"
+    //Checkout stage
+    stage ('Checkout'){
+        git branch: 'develop', credentialsId: '8b58696c-5f95-4ef7-85ab-d3249695d56f', url: 'https://github.com/SeellaSridhar/Jenkins-Redhat-one.git'
+    }
+    
+    //Build Stage
+    
+    stage ('Build'){
+        sh "$mavenHome/bin/mvn clean package"
+    }
+}
